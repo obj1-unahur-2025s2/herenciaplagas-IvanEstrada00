@@ -26,14 +26,23 @@ class Barrio {
   }
 }
 class Plaga {
-  const poblacion  
+  var poblacion  
   method transmiteEnfermedad() = poblacion >=10
+  method atacar(elemento){
+    elemento.recibirAtaque(self)
+    poblacion = poblacion * 1.1
+  }
+
 }
 class Cucarachas inherits Plaga{
   const pesoPromedio 
   method daño() = poblacion/2
   override method transmiteEnfermedad() = super() && self.cumpleCondicion() 
+  override method atacar(elemento) {
+    super(elemento) && pesoPromedio + 2
+  }
   method cumpleCondicion() = pesoPromedio >= 10
+
 }
 class Pulgas inherits Plaga{
   method daño() = poblacion*2
